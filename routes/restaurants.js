@@ -59,7 +59,7 @@ router.get("/cities/:id", (req, res) => {
 router.get("/rest-cities", (req, res) => {
   client
     .query(
-      "SELECT r.name as restaurant_name, c.name as city_name FROM restaurant r JOIN city c ON r.city_id = c.id"
+      "SELECT r.name as restaurant_name, r.id as restaurant_id, c.name as city_name FROM restaurant r JOIN city c ON r.city_id = c.id"
     )
     .then((data) => res.json(data.rows))
     .catch((err) => console.log(err));
