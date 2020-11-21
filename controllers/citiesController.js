@@ -9,7 +9,6 @@ const citiesController = {
   },
   getSpecificCity: function (req, res) {
     const { id } = req.params;
-    console.log(typeof id);
     client
       .query("SELECT * FROM city WHERE id=$1", [id])
       .then((data) => res.json(data.rows))
