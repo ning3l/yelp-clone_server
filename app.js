@@ -6,7 +6,10 @@ var logger = require("morgan");
 const cors = require("cors");
 
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/restaurants");
+var restaurantRouter = require("./routes/restaurants");
+const citiesRouter = require("./routes/cities");
+const commentRouter = require("./routes/comments");
+const tagRouter = require("./routes/tags");
 
 var app = express();
 
@@ -18,6 +21,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/api", usersRouter);
+app.use("/api/restaurants", restaurantRouter);
+app.use("/api/cities", citiesRouter);
+app.use("/api/comments", commentRouter);
+app.use("/api/tags", tagRouter);
 
 module.exports = app;
